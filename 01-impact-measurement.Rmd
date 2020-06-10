@@ -1,20 +1,35 @@
 
+#  (PART) Building Your Package {-}
 
 # Impact Measurement {#impact-measurement}
-```{r echo=FALSE}
+## citations
+You can write citations, too. For example, we are using the **bookdown** package  in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
+
+## Tables 
+```{r echo=FALSE, message=FALSE}
 # load data 
-drm <- readr::read_csv("data/datenreifegradmodell.csv", quote = "\"", na = c(""))
+drm <- readr::read_csv("resources/tables/datenreifegradmodell.csv", quote = "\"", na = c(""))
 drm[is.na(drm)] <- ""
 ```
 
-You can write citations, too. For example, we are using the **bookdown** package  in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+### kable
+```{r, drm, echo=FALSE}
+k <- knitr::kable(drm, format = "html", caption = "Datenreifegrad sozialer Organisationen")
+k %>% 
+  kableExtra::kable_styling(font_size = 14) %>% 
+  kableExtra::column_spec(which(colnames(drm) == "Ausgezeichnet"), background = "#1a9641", include_thead = TRUE) %>% 
+  kableExtra::column_spec(which(colnames(drm) == "Fortgeschritten"), background = "#a6d96a", include_thead = TRUE) %>% 
+  kableExtra::column_spec(which(colnames(drm) == "Ausreichend"), background = "#fdae61", include_thead = TRUE) %>% 
+  kableExtra::column_spec(which(colnames(drm) == "Unzureichend"), background = "#d7191c", include_thead = TRUE)
 
-```{r nice-tab, echo=FALSE}
-# Move the time-based columns to the start of
-# the column series; modify the column labels of
-# the measurement-based columns
+```
+we can reference kable tables: see \@ref(tab:drm)
+
+### gt
+
+```{r echo=FALSE}
 gt_tbl <- gt::gt(drm)
-
 # Show the gt Table
 gt_tbl <- gt_tbl %>% 
    tab_header(
@@ -23,7 +38,8 @@ gt_tbl <- gt_tbl %>%
   ) %>% 
   tab_source_note(
     source_note = "Quelle: Center for Data Science & Public Policy, Data Maturity Framework, University of Chicago."
-  )
+  ) %>% 
+  opt_row_striping(row_striping = FALSE)
 
 gt_tbl <- gt_tbl %>%   
   tab_style(
@@ -42,6 +58,9 @@ gt_tbl <- gt_tbl %>%
     style = list(cell_fill(color = "#1a9641")),
     locations = list(cells_body(columns = vars(Ausgezeichnet)), cells_column_labels(vars(Ausgezeichnet)))
   )
-
+gt_tbl 
 ```
+
+sadly, referencing is not implemented yet for gt. 
+
 
