@@ -7,11 +7,16 @@
 .book .book-body .page-wrapper .page-inner section {
   line-height: 1.7;
   font-size: 1.6rem;
+  color: #3c3c3b
 }
 
 p, div {
   font-family: 'Roboto', sans-serif;
   font-size: 1.6rem;
+}
+
+h1, h2, h3 {
+  color: #2d3b5a
 }
 
 li, h1, h2, h3 {
@@ -37,4 +42,13 @@ pre {
 }
 pre code {
   white-space: inherit;
+}
+
+.btn-default {
+  background-color: #3c61aa;
+  border-color: #96c246;
+}
+
+a {
+  color: #2d3b5a
 }

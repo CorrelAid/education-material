@@ -9,8 +9,8 @@
 #TOC {
   line-height: 1;
   border-radius: 5px 5px 0 0;
-  background: #3863a2;
-  border-bottom: 2px solid #96c342;
+  background: #3c61aa;
+  border-bottom: 2px solid #96c246;
   width: auto;
 }
 #TOC:after,
@@ -20,7 +20,7 @@
   clear: both;
 }
 #TOC a {
-  background: #3863a2;
+  background: #3c61aa;
   color: #ffffff;
   display: block;
   padding: 19px 20px;
@@ -48,7 +48,7 @@
   bottom: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid #96c342;
+  border-bottom: 10px solid #96c246;
   margin-left: -10px;
 }
 #TOC > ul > li:first-child > a {
@@ -64,8 +64,8 @@
 #TOC > ul > li.active > a,
 #TOC > ul > li:hover > a {
   color: #ffffff;
-  box-shadow: inset 0 0 3px #3863a2;
-  background: #3863a2;
+  box-shadow: inset 0 0 3px #3c61aa;
+  background: #3c61aa;
 }
 #TOC .has-sub {
   z-index: 1;
