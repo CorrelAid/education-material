@@ -1,0 +1,28 @@
+--- 
+author: "CorrelAid Core Team"
+title: CorrelAid Data Journey 
+date: "`r Sys.Date()`"
+bibliography: [book.bib]
+biblio-style: apalike
+link-citations: yes
+output:
+  bookdown::html_book:
+    toc: yes
+    css: ["style.css", "toc.css"]
+---
+
+# Einführung
+```{r setup}
+library(flextable)
+library(gt)
+```
+
+test
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

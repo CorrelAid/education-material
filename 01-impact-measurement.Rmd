@@ -1,0 +1,47 @@
+
+
+# Impact Measurement {#impact-measurement}
+```{r echo=FALSE}
+# load data 
+drm <- readr::read_csv("data/datenreifegradmodell.csv", quote = "\"", na = c(""))
+drm[is.na(drm)] <- ""
+```
+
+You can write citations, too. For example, we are using the **bookdown** package  in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
+```{r nice-tab, echo=FALSE}
+# Move the time-based columns to the start of
+# the column series; modify the column labels of
+# the measurement-based columns
+gt_tbl <- gt::gt(drm)
+
+# Show the gt Table
+gt_tbl <- gt_tbl %>% 
+   tab_header(
+    title = md("**Datenreifegrad sozialer Organisationen**"),
+    subtitle = md("Ein Modellierungsframework")
+  ) %>% 
+  tab_source_note(
+    source_note = "Quelle: Center for Data Science & Public Policy, Data Maturity Framework, University of Chicago."
+  )
+
+gt_tbl <- gt_tbl %>%   
+  tab_style(
+    style = list(cell_fill(color = "#d7191c")),
+    locations = list(cells_body(columns = vars(Unzureichend)), cells_column_labels(vars(Unzureichend)))
+    ) %>% 
+  tab_style(
+    style = list(cell_fill(color = "#fdae61")),
+    locations = list(cells_body(columns = vars(Ausreichend)), cells_column_labels(vars(Ausreichend)))
+  ) %>% 
+  tab_style(
+    style = list(cell_fill(color = "#a6d96a")),
+    locations = list(cells_body(columns = vars(Fortgeschritten)), cells_column_labels(vars(Fortgeschritten)))
+  ) %>% 
+  tab_style(
+    style = list(cell_fill(color = "#1a9641")),
+    locations = list(cells_body(columns = vars(Ausgezeichnet)), cells_column_labels(vars(Ausgezeichnet)))
+  )
+
+```
+
