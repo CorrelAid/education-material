@@ -4,7 +4,6 @@ title: CorrelAid Data Journey
 date: "`r Sys.Date()`"
 knit: "bookdown::render_book"
 bibliography: [book.bib, packages.bib]
-biblio-style: apalike
 link-citations: yes
 lot: yes
 lof: yes
