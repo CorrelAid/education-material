@@ -7,6 +7,9 @@ bibliography: [book.bib, packages.bib]
 link-citations: yes
 lot: yes
 lof: yes
+output:
+  bookdown::gitbook:
+    fig_caption: yes
 site: bookdown::bookdown_site
 favicon: resources/images/favicon.ico
 cover-image: resources/images/logo.png
@@ -16,19 +19,19 @@ description: "A guide to authoring books with R Markdown, including how to gener
 
 
 ```{r setup, echo=FALSE, include=FALSE}
-library(flextable)
 library(gt)
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
 
+
 ```
 
 
 # {-}
 
-```{r, echo = FALSE, fig.cap="cover image"}
+```{r logo, echo = FALSE, fig.cap="cover image"}
 knitr::include_graphics("resources/images/logo.png")
 ```
 
@@ -37,8 +40,142 @@ knitr::include_graphics("resources/images/logo.png")
 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/us/88x31.png" /></a><br /> This work is licensed under [a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 United States License](https://creativecommons.org/licenses/by-nc-sa/3.0/us/). Refer to [its Zenodo DOI](https://doi.org/10.5281/zenodo.2553043) to cite it.
 
 
-# Einführung
+# Einführung {#intro}
 
-[a link](https://correlaid.org)
+Um ein neues *Chapter* zu erstellen, legt man eine neue Rmd Datei in RStudio an (Datei -> Neu -> RMarkdown). Der Dateiname sollte durchnummeriert sein (vgl. `02-sample-chapter.Rmd`). 
 
-this is a living document 
+Den YAML Header (alles zwischen `---`) kann man löschen. Wichtig ist, dass das Dokument mit einer Markdown Überschrift beginnt:
+`# My Chapter`
+
+
+Markdown provides an easy way to make standard types of formatted text, like
+
+- *italics*
+- **bold**
+- `code`
+- [links](rmarkdown.rstudio.com)
+- etc.
+
+Ein Zitat kann man so machen: 
+
+> this is a quote. 
+(A very cool person)
+
+
+
+## Citations {#citations}
+You can write citations, too. For example, we are using the **bookdown** package  in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
+We can also cite R Packages, e.g. knitr [@R-knitr] or: Rmarkdown is a package by @R-rmarkdown
+
+@center_for_data_science_and_public_policy_university_of_chicago_data_2018
+
+## Tables 
+```{r echo=FALSE, message=FALSE}
+# load data 
+drm <- readr::read_csv("resources/tables/datenreifegradmodell.csv", quote = "\"", na = c(""))
+drm[is.na(drm)] <- ""
+```
+
+### kable
+```{r, drm, echo=FALSE}
+k <- knitr::kable(drm, format = "html", caption = "Datenreifegrad sozialer Organisationen")
+k %>% 
+  kableExtra::kable_styling(font_size = 14) %>% 
+  kableExtra::column_spec(which(colnames(drm) == "Ausgezeichnet"), background = "#1a9641", include_thead = TRUE) %>% 
+  kableExtra::column_spec(which(colnames(drm) == "Fortgeschritten"), background = "#a6d96a", include_thead = TRUE) %>% 
+  kableExtra::column_spec(which(colnames(drm) == "Ausreichend"), background = "#fdae61", include_thead = TRUE) %>% 
+  kableExtra::column_spec(which(colnames(drm) == "Unzureichend"), background = "#d7191c", include_thead = TRUE)
+```
+we can reference kable tables: see \@ref(tab:drm)
+
+### gt
+
+```{r echo=FALSE}
+gt_tbl <- gt::gt(drm)
+# Show the gt Table
+gt_tbl <- gt_tbl %>% 
+   tab_header(
+    title = "Data Maturity Framework",
+    subtitle = "Ein  Modellierungsframework"
+  ) %>% 
+  tab_source_note(
+    source_note = "Quelle: Center for Data Science & Public Policy, Data Maturity Framework, University of Chicago."
+  ) %>% 
+  opt_row_striping(row_striping = FALSE) 
+
+gt_tbl <- gt_tbl %>%   
+  tab_style(
+    style = list(cell_fill(color = "#d7191c")),
+    locations = list(cells_body(columns = vars(Unzureichend)), cells_column_labels(vars(Unzureichend)))
+    ) %>% 
+  tab_style(
+    style = list(cell_fill(color = "#fdae61")),
+    locations = list(cells_body(columns = vars(Ausreichend)), cells_column_labels(vars(Ausreichend)))
+  ) %>% 
+  tab_style(
+    style = list(cell_fill(color = "#a6d96a")),
+    locations = list(cells_body(columns = vars(Fortgeschritten)), cells_column_labels(vars(Fortgeschritten)))
+  ) %>% 
+  tab_style(
+    style = list(cell_fill(color = "#1a9641")),
+    locations = list(cells_body(columns = vars(Ausgezeichnet)), cells_column_labels(vars(Ausgezeichnet)))
+  )
+gt_tbl 
+```
+
+sadly, referencing is not implemented yet for gt. 
+
+
+## Images {#images}
+
+You can include images like so:
+ 
+![CorrelAid logo](resources/images/logo.png)
+
+you can control width or height in different units like so: 
+
+controlling the width:
+
+![CorrelAid logo](resources/images/logo.png){width=1in}
+
+controlling the height:
+
+![CorrelAid logo](resources/images/logo.png){height=2cm}
+
+the part in '[]' is the alt text. it is important for vision-impaired people to specify this because screenreaders will rely on them. 
+
+
+You can also use R to include images. One advantage is that we can use the chunk label for crossreferencing. For that to work, we need to provide a caption to the figure by using the chunk option `fig.cap`.
+```{r ca-logo, fig.cap="A caption"}
+knitr::include_graphics("resources/images/logo.png")
+```
+
+control width / height using different [chunk options](https://yihui.org/knitr/options/#plots) 
+```{r ca-logo2, out.width=200}
+knitr::include_graphics("resources/images/logo.png")
+```
+
+```{r ca-logo3, out.width="30%"}
+knitr::include_graphics("resources/images/logo.png")
+```
+
+```{r cars-plot, fig.cap="a plot from the cars dataset"}
+plot(cars$speed)
+```
+
+## Cross-referencing {#crossref}
+Goes to title logo \@ref(fig:logo)
+
+goes to first small logo \@ref(fig:ca-logo)
+
+goes to cars plot \@ref(fig:cars-plot)
+
+goes to kable table \@ref(tab:drm)
+
+reference another section : \@ref(intro), you can also hyperlink a section: Read more about it in the [intro section](#intro). Read more about RMarkdown [here](#rmarkdown)
+
+## Ressourcen
+- [RMarkdown Cheatsheet](https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf?_ga=2.165041471.1414238925.1592201672-701677801.1580388718)
+- [RMarkdown RStudio Kurs](https://rmarkdown.rstudio.com/lesson-1.html)
+- [citations](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)

@@ -1,9 +1,10 @@
 bookdown::gitbook:
   css: style.css
   split_by: chapter 
+  fig_caption: yes
   config:
     toc:
-      before: <li>hello </li>
+      before: <li>CorrelAid Data Journey </li>
     edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
     info: no
     fontsettings: no
