@@ -4,35 +4,36 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Impact Measurement | CorrelAid Data Journey</title>
-  <meta name="description" content="2 Impact Measurement | CorrelAid Data Journey" />
+  <title>2 Introduction | CorrelAid Data Journey</title>
+  <meta name="description" content="A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Impact Measurement | CorrelAid Data Journey" />
+  <meta property="og:title" content="2 Introduction | CorrelAid Data Journey" />
   <meta property="og:type" content="book" />
   
-  
-  
+  <meta property="og:image" content="resources/images/logo.png" />
+  <meta property="og:description" content="A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Impact Measurement | CorrelAid Data Journey" />
+  <meta name="twitter:title" content="2 Introduction | CorrelAid Data Journey" />
   
-  
-  
+  <meta name="twitter:description" content="A guide to authoring books with R Markdown, including how to generate figures and tables, and insert cross-references, citations, HTML widgets, and Shiny apps in R Markdown. The book can be exported to HTML, PDF, and e-books (e.g. EPUB). The book style is customizable. You can easily write and preview the book in RStudio IDE or other editors, and host the book wherever you want (e.g. bookdown.org)." />
+  <meta name="twitter:image" content="resources/images/logo.png" />
 
-<meta name="author" content="Yihui Xie" />
+<meta name="author" content="CorrelAid Core Team" />
 
 
-<meta name="date" content="2020-06-09" />
+<meta name="date" content="2020-06-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  
-<link rel="prev" href="index.html"/>
-<link rel="next" href="references.html"/>
+  <link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="sample-chapter.html"/>
+<script src="libs/header-attrs-2.1/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,28 +51,30 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -128,11 +131,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">CorrelAid Data Journey</a></li>
-
+<li>CorrelAid Data Journey </li>
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Einführung</a></li>
-<li class="chapter" data-level="2" data-path="impact-measurement.html"><a href="impact-measurement.html"><i class="fa fa-check"></i><b>2</b> Impact Measurement</a></li>
+<li><a href="index.html#section"></a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Einführung</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#citations"><i class="fa fa-check"></i><b>1.1</b> Citations</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#tables"><i class="fa fa-check"></i><b>1.2</b> Tables</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#kable"><i class="fa fa-check"></i><b>1.2.1</b> kable</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#gt"><i class="fa fa-check"></i><b>1.2.2</b> gt</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#images"><i class="fa fa-check"></i><b>1.3</b> Images </a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#crossref"><i class="fa fa-check"></i><b>1.4</b> Cross-referencing</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#ressourcen"><i class="fa fa-check"></i><b>1.5</b> Ressourcen</a></li>
+</ul></li>
+<li class="part"><span><b>I Impact Measurement</b></span></li>
+<li class="chapter" data-level="2" data-path="impact-measurement.html"><a href="impact-measurement.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="sample-chapter.html"><a href="sample-chapter.html"><i class="fa fa-check"></i><b>3</b> Sample Chapter</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="sample-chapter.html"><a href="sample-chapter.html#rmarkdown"><i class="fa fa-check"></i><b>3.1</b> R Markdown</a></li>
+<li class="chapter" data-level="3.2" data-path="sample-chapter.html"><a href="sample-chapter.html#including-plots"><i class="fa fa-check"></i><b>3.2</b> Including Plots</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
@@ -151,32 +171,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="impact-measurement" class="section level1">
-<h1><span class="header-section-number">2</span> Impact Measurement</h1>
-<pre><code>## Parsed with column specification:
-## cols(
-##   Thema = col_character(),
-##   Unzureichend = col_character(),
-##   Ausreichend = col_character(),
-##   Fortgeschritten = col_character(),
-##   Ausgezeichnet = col_character()
-## )</code></pre>
-<p>You can write citations, too. For example, we are using the <strong>bookdown</strong> package in this sample book, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-xie2015">2015</a>)</span>.</p>
+<div id="impact-measurement" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Introduction</h1>
 
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-xie2015">
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.</p>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sample-chapter.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -192,8 +197,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
-"facebook": true,
+"github": true,
+"facebook": false,
 "twitter": true,
 "linkedin": false,
 "weibo": false,
@@ -201,14 +206,10 @@ gitbook.start({
 "vk": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
+"fontsettings": false,
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-impact-measurement.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,
@@ -218,11 +219,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["correlaid-data-journey.pdf", "correlaid-data-journey.epub"],
+"download": {},
 "toc": {
-"collapse": "subsection",
-"edit": "https://github.com/rstudio/bookdown-demo/edit/master/%s"
-}
+"collapse": "subsection"
+},
+"info": false
 });
 });
 </script>
