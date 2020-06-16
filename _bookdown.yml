@@ -1,2 +1,3 @@
 book_filename: "correlaid-data-journey"
 delete_merged_file: true
+output_dir: "public"
